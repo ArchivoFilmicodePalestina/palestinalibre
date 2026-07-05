@@ -245,7 +245,7 @@ for(const d of Object.keys(decadas).sort((a,b)=>a-b)){
   sec.dataset.edge = `PALESTINA ▲■ ${d}`;
   sec.innerHTML = `
     <div class="marca" data-edge="PALESTINA ▲■ ${d}">
-      <h2>Años ${String(d).slice(2)}0${d<1900?' · '+d:''}</h2>
+      <h2>Años ${d}</h2>
       <p class="edge">${vids.length} ${vids.length===1?'película':'películas'} · ${fmtDur(vids.reduce((x,v)=>x+v.duration,0))}</p>
     </div>
     <div class="fichas"></div>`;
