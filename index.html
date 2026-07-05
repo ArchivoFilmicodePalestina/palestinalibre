@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archivo Fílmico de Palestina — Línea de tiempo</title>
+<meta name="description" content="La memoria fílmica de Palestina ordenada cronológicamente, 1897–2015. Línea de tiempo del canal Archivo Fílmico de Palestina.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Lora:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sala:#1A1510;        /* sala de proyección */
+  --sala-2:#221B13;
+  --papel:#E9DFC8;       /* ficha de catálogo */
+  --papel-2:#DFD3B8;
+  --tinta:#2B241B;
+  --ambar:#C99347;       /* nitrato */
+  --ambar-claro:#E4B96E;
+  --gris:#9C8F79;
+  --rojo:#A8402F;        /* cabeza de proyección */
+  --strip-w:56px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  background:var(--sala);
+  color:var(--papel);
+  font-family:'Lora',Georgia,serif;
+  line-height:1.55;
+}
+::selection{background:var(--ambar);color:var(--sala)}
+
+/* ---------- cabecera ---------- */
+header{
+  padding:72px 24px 56px;
+  max-width:1060px;margin:0 auto;
+}
+.sobre{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ambar);margin-bottom:18px;
+}
+.sobre::before{content:"▲■● ";letter-spacing:.35em}
+h1{
+  font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 68,'wght' 850;
+  font-size:clamp(42px,7.5vw,92px);
+  line-height:.95;text-transform:uppercase;
+  letter-spacing:.01em;
+}
+h1 em{font-style:normal;color:var(--ambar)}
+.intro{
+  margin-top:22px;max-width:56ch;font-size:17px;color:#CDBFA4;
+}
+.intro a{color:var(--ambar-claro);text-decoration-color:rgba(201,147,71,.5)}
+.datos{
+  margin-top:26px;display:flex;gap:34px;flex-wrap:wrap;
+  font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gris);
+}
+.datos strong{display:block;font-size:26px;color:var(--papel);font-weight:500}
+
+/* ---------- navegación de décadas ---------- */
+nav{
+  position:sticky;top:0;z-index:40;
+  background:linear-gradient(var(--sala) 82%,transparent);
+  padding:14px 24px 22px;
+}
+.nav-inner{
+  max-width:1060px;margin:0 auto;display:flex;gap:6px;flex-wrap:wrap;
+}
+nav a{
+  font-family:'IBM Plex Mono',monospace;font-size:13px;
+  color:var(--gris);text-decoration:none;
+  border:1px solid #3A3226;padding:5px 11px;border-radius:2px;
+  transition:color .15s,border-color .15s;
+}
+nav a:hover,nav a:focus-visible{color:var(--ambar-claro);border-color:var(--ambar)}
+nav a.activa{color:var(--sala);background:var(--ambar);border-color:var(--ambar)}
+nav a:focus-visible{outline:2px solid var(--ambar-claro);outline-offset:2px}
+
+/* ---------- línea de tiempo ---------- */
+main{max-width:1060px;margin:0 auto;padding:10px 24px 90px;position:relative}
+
+/* tira de película como espina */
+.tira{
+  position:absolute;top:0;bottom:0;left:24px;width:var(--strip-w);
+  background:
+    repeating-linear-gradient(to bottom,
+      transparent 0 6px,
+      rgba(233,223,200,.16) 6px 16px,
+      transparent 16px 22px) left 6px top / 8px 100% no-repeat,
+    repeating-linear-gradient(to bottom,
+      transparent 0 6px,
+      rgba(233,223,200,.16) 6px 16px,
+      transparent 16px 22px) right 6px top / 8px 100% no-repeat,
+    linear-gradient(to right,
+      transparent 0, transparent 2px,
+      rgba(233,223,200,.05) 2px, rgba(233,223,200,.05) calc(100% - 2px),
+      transparent calc(100% - 2px));
+  border-left:1px solid #3A3226;border-right:1px solid #3A3226;
+}
+.decada{position:relative;padding-left:calc(var(--strip-w) + 44px);scroll-margin-top:86px}
+.decada + .decada{margin-top:56px}
+
+.marca{
+  position:relative;margin-bottom:26px;
+}
+.marca h2{
+  font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 66,'wght' 800;
+  font-size:clamp(34px,4.5vw,54px);color:var(--ambar);
+  line-height:1;text-transform:uppercase;
+}
+.marca .edge{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.3em;color:var(--gris);text-transform:uppercase;margin-top:6px;
+}
+/* código de borde sobre la tira */
+.marca::before{
+  content:attr(data-edge);
+  position:absolute;left:calc(-1 * (var(--strip-w) + 44px) + var(--strip-w)/2);
+  top:8px;transform:translateX(-50%) rotate(180deg);
+  writing-mode:vertical-rl;
+  font-family:'IBM Plex Mono',monospace;font-size:10px;
+  letter-spacing:.35em;color:var(--ambar);white-space:nowrap;
+}
+
+/* ---------- fichas ---------- */
+.fichas{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+.ficha{
+  background:var(--papel);color:var(--tinta);
+  border-radius:2px;overflow:hidden;
+  display:flex;flex-direction:column;
+  box-shadow:0 1px 0 rgba(0,0,0,.5),0 8px 22px -12px rgba(0,0,0,.7);
+}
+.fotograma{
+  position:relative;aspect-ratio:16/9;background:#0D0A07;cursor:pointer;border:0;padding:0;display:block;width:100%;
+}
+.fotograma img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(.14) contrast(1.02)}
+.fotograma .play{
+  position:absolute;inset:auto auto 10px 10px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;
+  background:var(--rojo);color:#F3E9D6;padding:4px 9px;border-radius:2px;
+}
+.fotograma:hover .play,.fotograma:focus-visible .play{background:#C24E3B}
+.fotograma:focus-visible{outline:3px solid var(--ambar);outline-offset:-3px}
+.fotograma iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ficha-cuerpo{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.ficha-anio{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;
+  color:#7A6A4E;display:flex;justify-content:space-between;
+}
+.ficha h3{
+  font-family:'Lora',serif;font-weight:500;font-size:16px;line-height:1.35;flex:1;
+}
+.ficha a.yt{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;
+  color:#8A5A20;text-decoration:none;text-transform:uppercase;
+}
+.ficha a.yt:hover{text-decoration:underline}
+
+footer{
+  border-top:1px solid #3A3226;
+  max-width:1060px;margin:0 auto;padding:34px 24px 60px;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gris);
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+}
+footer a{color:var(--ambar-claro)}
+
+@media (max-width:640px){
+  header{padding:52px 18px 40px}
+  main{padding:6px 18px 70px}
+  .tira{left:12px;width:34px}
+  :root{--strip-w:34px}
+  .decada{padding-left:calc(var(--strip-w) + 26px)}
+  .marca::before{display:none}
+  nav{padding:10px 18px 16px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <p class="sobre">Filmoteca en línea · 1897 – 2015</p>
+  <h1>Archivo Fílmico<br>de <em>Palestina</em></h1>
+  <p class="intro">Un espacio para recuperar la memoria fílmica de Palestina. Todos los materiales del canal
+    <a href="https://www.youtube.com/@ArchivoFilmicodePalestina" target="_blank" rel="noopener">@ArchivoFilmicodePalestina</a>,
+    ordenados por el año de filmación de las imágenes — no por su fecha de subida.</p>
+  <div class="datos">
+    <div><strong id="d-total">—</strong>películas</div>
+    <div><strong id="d-rango">—</strong>años cubiertos</div>
+    <div><strong id="d-horas">—</strong>de proyección</div>
+  </div>
+</header>
+
+<nav aria-label="Décadas"><div class="nav-inner" id="nav"></div></nav>
+
+<main>
+  <div class="tira" aria-hidden="true"></div>
+  <div id="linea"></div>
+</main>
+
+<footer>
+  <span>ARCHIVO FÍLMICO DE PALESTINA — LÍNEA DE TIEMPO</span>
+  <span>Catálogo generado desde YouTube · <a href="https://www.youtube.com/@ArchivoFilmicodePalestina" target="_blank" rel="noopener">Canal original</a></span>
+</footer>
+
+<script>
+const CATALOGO = [{"id": "E0SZ2RxtYK8", "title": "Caravane de chameaux N°407, Alexandre Promio, Turquie d’Asie, Jérusalem, (1897)", "year": 1897, "approx": false, "duration": 65}, {"id": "6oVQBvD3o8A", "title": "Puerta de Jaffa: lado este. Película H. Lumière No. 401, Alexandre Promio, Jérusalem, 1897", "year": 1897, "approx": false, "duration": 62}, {"id": "7MJWlhClBfM", "title": "Camellos y Jaffa, Escenas en Jaffa bajo la ocupación británica, Frente Palestino (1917)", "year": 1917, "approx": false, "duration": 325}, {"id": "q6vF-3AA4Ds", "title": "Piscina de Salomón en Belén y Jerusalén (1917)", "year": 1917, "approx": false, "duration": 563}, {"id": "6ADVbw3exdc", "title": "Vistas de la mezquita de Omar en Jerusalén custodiada por tropas indias, Frente Palestino (1917)", "year": 1917, "approx": false, "duration": 194}, {"id": "YZXPGCGv_I8", "title": "De Jaffa al Jordán, Volando sobre Jaffa a 5000 pies (Segmento) (RAF Palestina) (1918)", "year": 1918, "approx": false, "duration": 180}, {"id": "RWQgziASC-0", "title": "Personas caminando en Jaffa, Palestina (1918)", "year": 1918, "approx": false, "duration": 14}, {"id": "SX_RHh8j-lA", "title": "Escenas de las calles de Jerusalén (tomas descartadas) (segmento) (1929)", "year": 1929, "approx": false, "duration": 588}, {"id": "daQSULU8QnI", "title": "En el mar que nuestro salvador sabía, Tibería , Palestina (1931)", "year": 1931, "approx": false, "duration": 47}, {"id": "WiDSQBO6be4", "title": "Tierra de Canaán, Palestina (1932)", "year": 1932, "approx": false, "duration": 116}, {"id": "8GLOambH8Ow", "title": "Calles concurridas y vida urbana de judíos y árabes en Palestina (Home Movie) (1934)", "year": 1934, "approx": false, "duration": 371}, {"id": "ZUWI7l1lxXQ", "title": "La vida en Palestina (Home Movie) (1934)", "year": 1934, "approx": false, "duration": 233}, {"id": "RcUaP_WviVU", "title": "Escena callejeras en Jaffa, Palestina (1938)", "year": 1938, "approx": false, "duration": 87}, {"id": "Ko2spYbcPmc", "title": "En Palestina hoy - Tel Aviv (New Empire News) (1939)", "year": 1939, "approx": false, "duration": 84}, {"id": "LE8A-2i4fMQ", "title": "La industria y la religión chocan en Israel y Palestina (1943)", "year": 1943, "approx": false, "duration": 93}, {"id": "0H4WmVzSeDI", "title": "Consecuencias del ataque terrxrista del Irgún al Hotel King David en Jerusalén, Palestina (1946)", "year": 1946, "approx": false, "duration": 122}, {"id": "hiYNk7ybekU", "title": "Explosión del Hotal King David (1946)", "year": 1946, "approx": false, "duration": 150}, {"id": "qsWKQh5VI1s", "title": "Jaffa nos envía naranjas (1946)", "year": 1946, "approx": false, "duration": 62}, {"id": "zQy73UybWnY", "title": "Noticias de Palast (Noticias de Palestina, 1946)", "year": 1946, "approx": false, "duration": 125}, {"id": "2FX44rLhYUg", "title": "Palestina Partida - Hoy En La Historia 29 Nov, 47 (1947)", "year": 1947, "approx": false, "duration": 169}, {"id": "C-qsUOV0_jY", "title": "Palestina hoy, Jerusalén, Palestina (1947)", "year": 1947, "approx": false, "duration": 335}, {"id": "ykUS5gdJKDw", "title": "Respuesta final de los terrxristas y toque de queda en Jerusalén (1947)", "year": 1947, "approx": false, "duration": 81}, {"id": "LW-d65lHky8", "title": "Retrato de Palestina (Documental) (1947)", "year": 1947, "approx": false, "duration": 1023}, {"id": "yYd_ceaJDCU", "title": "9 de abril de 1948 masacre de Deir Yassin (1948)", "year": 1948, "approx": false, "duration": 37}, {"id": "dyrfFsaYStQ", "title": "La batalla de Palestina, toma de Jerusalén por fuerzas árabes (1948)", "year": 1948, "approx": false, "duration": 183}, {"id": "j-MdMJOBENU", "title": "Noticias de un minuto Palestina (1948)", "year": 1948, "approx": false, "duration": 59}, {"id": "_NRAX4WGOVw", "title": "Nuevas imágenes de la tragedia judeoárabe (1948)", "year": 1948, "approx": false, "duration": 48}, {"id": "cG0yd8aWvsE", "title": "Palestina desafía a los pacificadores (1948)", "year": 1948, "approx": false, "duration": 77}, {"id": "yZkPxN-7SLU", "title": "Tropas palestinas israelíes de la Haganá ocupan Jaffa (1948)", "year": 1948, "approx": false, "duration": 104}, {"id": "51UacMn6AmY", "title": "Home movie Fontera Jordania con Palestina, Jerusalén, Palestina 16mm, (Extracto) (1950s)", "year": 1950, "approx": true, "duration": 192}, {"id": "HLRZWtyZ0BI", "title": "Refugiados de Palestina de los años 50", "year": 1950, "approx": true, "duration": 469}, {"id": "7DybVF_5rmk", "title": "Choque en Gaza (1956)", "year": 1956, "approx": false, "duration": 68}, {"id": "Hs978ezGUFQ", "title": "ISRAEL/EGIPTO; Las tropas de la ONU entran en Gaza (1957)", "year": 1957, "approx": false, "duration": 81}, {"id": "T9ojnTRFmOs", "title": "Historia de Cisjordania desde 1947 (1963)", "year": 1963, "approx": false, "duration": 106}, {"id": "VtjOPinbeaA", "title": "Palestina antigua (Ancient Palestine) (1968)", "year": 1968, "approx": false, "duration": 814}, {"id": "oMHMXap4RTA", "title": "Campo de refugiados palestinos de Baqa'a (1970s)", "year": 1970, "approx": true, "duration": 1134}, {"id": "pFThM74okZw", "title": "Desde 1949, la UNRWA ayuda a los refugiados palestinos INA  VOSE 1972", "year": 1972, "approx": false, "duration": 348}, {"id": "-jMLxr-n98M", "title": "Omar Maher historia de un refugiado palestino educación infantil (1972)", "year": 1972, "approx": false, "duration": 1543}, {"id": "a4Rsf09oFkY", "title": "Escenas de la ocupación de Gaza - Mustafa Abu Ali (1973)", "year": 1973, "approx": false, "duration": 1828}, {"id": "_p-gB7w76ow", "title": "Caminos hacia el conflicto - Episodio 1 - La tierra misma (BBC) (1978)", "year": 1978, "approx": false, "duration": 1505}, {"id": "mjm68FKjV4k", "title": "Caminos hacia el conflicto - Episodio 2 - Regreso a Sión (BBC) (1978)", "year": 1978, "approx": false, "duration": 1465}, {"id": "iG8ni2XJ0y8", "title": "Caminos hacia el conflicto - Episodio 3 - Guerra y diplomacia (BBC) (1978)", "year": 1978, "approx": false, "duration": 1469}, {"id": "LMI6MJJF2Dg", "title": "Caminos hacia el conflicto - Episodio 4 - El mandato comienza (BBC) (1978)", "year": 1978, "approx": false, "duration": 1489}, {"id": "ubYkMt5gXLc", "title": "Palestina historia de una tierra - 1950 1991 (1996)", "year": 1996, "approx": false, "duration": 6956}, {"id": "Jh5iXm5mlVU", "title": "Trailer Off Frame aka Revolution Until Victory - Mohanad Yaqubi (2015)", "year": 2015, "approx": false, "duration": 118}];
+
+const fmtDur = s => {
+  if(!s) return "";
+  const h=Math.floor(s/3600), m=Math.floor(s%3600/60);
+  return h ? `${h} h ${m} min` : `${m||1} min`;
+};
+
+// estadísticas
+const anios = CATALOGO.map(v=>v.year);
+document.getElementById('d-total').textContent = CATALOGO.length;
+document.getElementById('d-rango').textContent = `${Math.min(...anios)}–${Math.max(...anios)}`;
+const total = CATALOGO.reduce((a,v)=>a+v.duration,0);
+document.getElementById('d-horas').textContent = `${Math.round(total/3600)} h`;
+
+// agrupar por década
+const decadas = {};
+for(const v of CATALOGO){
+  const d = Math.floor(v.year/10)*10;
+  (decadas[d] ||= []).push(v);
+}
+
+const nav = document.getElementById('nav');
+const linea = document.getElementById('linea');
+
+for(const d of Object.keys(decadas).sort((a,b)=>a-b)){
+  const vids = decadas[d];
+
+  const a = document.createElement('a');
+  a.href = `#d${d}`; a.textContent = `${d}s`; a.dataset.d = d;
+  nav.appendChild(a);
+
+  const sec = document.createElement('section');
+  sec.className = 'decada'; sec.id = `d${d}`;
+  sec.dataset.edge = `PALESTINA ▲■ ${d}`;
+  sec.innerHTML = `
+    <div class="marca" data-edge="PALESTINA ▲■ ${d}">
+      <h2>Años ${String(d).slice(2)}0${d<1900?' · '+d:''}</h2>
+      <p class="edge">${vids.length} ${vids.length===1?'película':'películas'} · ${fmtDur(vids.reduce((x,v)=>x+v.duration,0))}</p>
+    </div>
+    <div class="fichas"></div>`;
+  const cont = sec.querySelector('.fichas');
+
+  for(const v of vids){
+    const f = document.createElement('article');
+    f.className = 'ficha';
+    f.innerHTML = `
+      <button class="fotograma" aria-label="Reproducir: ${v.title.replace(/"/g,'&quot;')}">
+        <img loading="lazy" src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="">
+        <span class="play">▶ PROYECTAR</span>
+      </button>
+      <div class="ficha-cuerpo">
+        <div class="ficha-anio"><span>${v.approx?'ca. ':''}${v.year}</span><span>${fmtDur(v.duration)}</span></div>
+        <h3>${v.title}</h3>
+        <a class="yt" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">Ver en YouTube ↗</a>
+      </div>`;
+    f.querySelector('.fotograma').addEventListener('click', e => {
+      const b = e.currentTarget;
+      b.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${v.id}?autoplay=1" title="${v.title.replace(/"/g,'&quot;')}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+      b.style.cursor = 'default';
+    }, {once:true});
+    cont.appendChild(f);
+  }
+  linea.appendChild(sec);
+}
+
+// resaltar década visible
+const links = [...nav.querySelectorAll('a')];
+const obs = new IntersectionObserver(es => {
+  for(const e of es){
+    if(e.isIntersecting){
+      links.forEach(l=>l.classList.toggle('activa', '#'+e.target.id === l.getAttribute('href')));
+    }
+  }
+},{rootMargin:'-15% 0px -70% 0px'});
+document.querySelectorAll('.decada').forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
