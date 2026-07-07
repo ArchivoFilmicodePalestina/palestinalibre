@@ -236,6 +236,43 @@ footer a{color:var(--ambar-claro)}
 .visor-info .vanio{color:var(--verde);font-weight:500}
 .visor-web{flex:1;width:100%;border:0;background:#fff}
 
+/* ---------- sala de proyección ---------- */
+.btn-sala{
+  font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.12em;
+  background:var(--rojo);color:#F7EDE0;border:1px solid var(--rojo);
+  padding:5px 13px;border-radius:2px;cursor:pointer;text-transform:uppercase;
+}
+.btn-sala:hover{background:#E0263B;border-color:#E0263B}
+.sala{position:fixed;inset:0;z-index:200;background:#000;display:none}
+.sala.abierta{display:block}
+.sala-player{position:absolute;inset:0}
+.sala-player iframe{width:100%;height:100%;border:0}
+.sala-rotulo{
+  position:absolute;top:18px;left:18px;z-index:2;max-width:min(560px,80vw);
+  background:rgba(13,10,7,.82);border-left:3px solid var(--verde);
+  padding:10px 16px;color:var(--papel);
+  opacity:0;pointer-events:none;transition:opacity .4s;
+}
+.sala-rotulo.visible{opacity:1}
+.sala-rotulo .r-anio{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ambar-claro);letter-spacing:.15em}
+.sala-rotulo .r-titulo{font-family:'Lora',serif;font-size:16px;margin-top:3px}
+.sala-controles{
+  position:absolute;bottom:18px;right:18px;z-index:2;display:flex;gap:8px;
+}
+.sala-controles button{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;
+  background:rgba(13,10,7,.82);color:var(--papel);
+  border:1px solid rgba(233,223,200,.35);padding:7px 13px;border-radius:2px;cursor:pointer;
+}
+.sala-controles button:hover{border-color:var(--ambar);color:var(--ambar-claro)}
+.sala-controles .rojo{background:var(--rojo);border-color:var(--rojo);color:#F7EDE0}
+.sala-controles .rojo:hover{background:#E0263B;color:#fff}
+.sala-contador{
+  position:absolute;bottom:18px;left:18px;z-index:2;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;
+  color:rgba(233,223,200,.6);
+}
+
 @media (max-width:640px){
   header{padding:52px 18px 40px}
   main{padding:6px 18px 70px}
@@ -253,9 +290,10 @@ footer a{color:var(--ambar-claro)}
   <p class="sobre">Filmoteca en línea · 1897 – 2015</p>
   <h1>Archivo Fílmico<br>de <em>Palestina</em></h1>
   <div class="bandera" aria-hidden="true"></div>
-  <p class="intro">Un espacio para recuperar la memoria fílmica de Palestina. Todos los materiales del canal
+  <p class="intro">Un espacio para recuperar la memoria fílmica de Palestina. Muchos de los materiales provienen del canal
     <a href="https://www.youtube.com/@ArchivoFilmicodePalestina" target="_blank" rel="noopener">@ArchivoFilmicodePalestina</a>,
-    ordenados por el año de filmación de las imágenes — no por su fecha de subida.</p>
+    junto a piezas de otras fuentes como <a href="https://www.naranjasdehiroshima.com" target="_blank" rel="noopener">Naranjas de Hiroshima</a>.
+    Todo ordenado por el año de filmación de las imágenes — no por su fecha de publicación.</p>
   <div class="datos">
     <div><strong id="d-total">—</strong>películas</div>
     <div><strong id="d-rango">—</strong>años cubiertos</div>
@@ -263,7 +301,7 @@ footer a{color:var(--ambar-claro)}
   </div>
 </header>
 
-<nav aria-label="Décadas"><div class="nav-inner" id="nav"></div></nav>
+<nav aria-label="Décadas"><div class="nav-inner" id="nav"><button class="btn-sala" id="btn-sala">▶ Sala de proyección</button></div></nav>
 
 <main>
   <div class="tira" aria-hidden="true"></div>
@@ -272,7 +310,7 @@ footer a{color:var(--ambar-claro)}
 
 <footer>
   <span>ARCHIVO FÍLMICO DE PALESTINA — LÍNEA DE TIEMPO</span>
-  <span>Catálogo generado desde YouTube · <a href="https://www.youtube.com/@ArchivoFilmicodePalestina" target="_blank" rel="noopener">Canal original</a></span>
+  <span>Catálogo multi-fuente · <a href="https://www.youtube.com/@ArchivoFilmicodePalestina" target="_blank" rel="noopener">@ArchivoFilmicodePalestina</a> · <a href="https://www.naranjasdehiroshima.com" target="_blank" rel="noopener">Naranjas de Hiroshima</a></span>
 </footer>
 
 <div class="visor" id="visor" role="dialog" aria-modal="true" aria-label="Ficha">
@@ -283,6 +321,19 @@ footer a{color:var(--ambar-claro)}
       <button id="vcerrar" aria-label="Cerrar">✕ CERRAR</button>
     </div>
     <div class="visor-cuerpo" id="vcuerpo"></div>
+  </div>
+</div>
+
+<div class="sala" id="sala" role="dialog" aria-modal="true" aria-label="Sala de proyección">
+  <div class="sala-player" id="sala-player"><div id="yt-sala"></div></div>
+  <div class="sala-rotulo" id="sala-rotulo">
+    <div class="r-anio" id="r-anio"></div>
+    <div class="r-titulo" id="r-titulo"></div>
+  </div>
+  <span class="sala-contador" id="sala-contador"></span>
+  <div class="sala-controles">
+    <button id="sala-sig">⏭ SIGUIENTE</button>
+    <button id="sala-salir" class="rojo">✕ SALIR</button>
   </div>
 </div>
 
@@ -354,7 +405,75 @@ const cerrarVisor = () => {
 };
 document.getElementById('vcerrar').addEventListener('click', cerrarVisor);
 visor.addEventListener('click', e => { if(e.target === visor) cerrarVisor(); });
-document.addEventListener('keydown', e => { if(e.key === 'Escape') cerrarVisor(); });
+
+// ---------- sala de proyección ----------
+const sala = document.getElementById('sala');
+const PROYECTABLES = CATALOGO.filter(v => (v.source||'youtube') === 'youtube');
+let cola = [], pos = -1, ytPlayer = null, ytListo = false, rotuloTimer = null;
+
+const barajar = a => { a=[...a]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+
+function cargarYTAPI(cb){
+  if (window.YT && YT.Player) return cb();
+  window.onYouTubeIframeAPIReady = cb;
+  const s = document.createElement('script');
+  s.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(s);
+}
+
+function mostrarRotulo(v){
+  const r = document.getElementById('sala-rotulo');
+  document.getElementById('r-anio').textContent = `${v.approx?'ca. ':''}${v.year} · SALA DE PROYECCIÓN`;
+  document.getElementById('r-titulo').textContent = v.title;
+  document.getElementById('sala-contador').textContent = `${pos+1} / ${cola.length}`;
+  r.classList.add('visible');
+  clearTimeout(rotuloTimer);
+  rotuloTimer = setTimeout(()=>r.classList.remove('visible'), 6000);
+}
+
+function proyectar(){
+  pos++;
+  if (pos >= cola.length){ cola = barajar(PROYECTABLES); pos = 0; }  // reinicia barajado
+  const v = cola[pos];
+  mostrarRotulo(v);
+  if (ytPlayer) ytPlayer.loadVideoById(v.id);
+}
+
+function abrirSala(){
+  cola = barajar(PROYECTABLES); pos = -1;
+  sala.classList.add('abierta');
+  document.body.style.overflow = 'hidden';
+  cargarYTAPI(()=>{
+    if (ytListo){ proyectar(); return; }
+    pos = 0;
+    const v = cola[0];
+    mostrarRotulo(v);
+    ytPlayer = new YT.Player('yt-sala', {
+      videoId: v.id,
+      host: 'https://www.youtube-nocookie.com',
+      playerVars: { autoplay:1, rel:0, modestbranding:1 },
+      events: {
+        onReady: e => { ytListo = true; e.target.playVideo(); },
+        onStateChange: e => { if (e.data === YT.PlayerState.ENDED) proyectar(); },
+        onError: () => setTimeout(proyectar, 800)   // video no embebible: saltar
+      }
+    });
+  });
+}
+
+function cerrarSala(){
+  sala.classList.remove('abierta');
+  document.body.style.overflow = '';
+  if (ytPlayer && ytListo) ytPlayer.stopVideo();
+}
+
+document.getElementById('btn-sala').addEventListener('click', abrirSala);
+document.getElementById('sala-sig').addEventListener('click', proyectar);
+document.getElementById('sala-salir').addEventListener('click', cerrarSala);
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  if (sala.classList.contains('abierta')) cerrarSala(); else cerrarVisor();
+});
 
 // estadísticas
 const anios = CATALOGO.map(v=>v.year);
