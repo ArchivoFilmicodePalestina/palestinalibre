@@ -1,0 +1,69 @@
+{
+  "_comentario": "Fuentes del catálogo. En 'youtube' van URLs de canales (/videos) o playlists. En 'manual' van piezas sueltas: source = 'youtube' | 'vimeo' | 'archive' | 'link' (url directa, sin embed). 'activo': false oculta la entrada sin borrarla.",
+
+  "youtube": [
+    "https://www.youtube.com/@ArchivoFilmicodePalestina/videos"
+  ],
+
+  "manual": [
+    {
+      "source": "youtube",
+      "id": "pZsfFgkxDo8",
+      "title": "Palestine in the Eye - Mustafa Abu Ali (1977) · NdH",
+      "year": 1977, "approx": false, "duration": 0, "activo": true
+    },
+    {
+      "source": "youtube",
+      "id": "PdslDatAA8I",
+      "title": "Checkpoint Rock: Canciones desde Palestina - Fermin Muguruza y Javier Corcuera (2009) · NdH",
+      "year": 2009, "approx": false, "duration": 0, "activo": true
+    },
+    {
+      "source": "vimeo",
+      "id": "25597069",
+      "title": "Puertas al Mar - Gaza (2011) · NdH",
+      "year": 2011, "approx": false, "duration": 1407, "activo": true
+    },
+    {
+      "source": "youtube",
+      "id": "20UIkLcGRQE",
+      "title": "Off Frame aka Revolution Until Victory - Mohanad Yaqubi (2015) · NdH",
+      "year": 2015, "approx": false, "duration": 0, "activo": true
+    },
+    {
+      "source": "youtube",
+      "id": "1mBUzayokz0",
+      "title": "Tantura - Alon Schwarz (2022) · NdH",
+      "year": 2022, "approx": false, "duration": 0, "activo": true
+    },
+    {
+      "source": "link",
+      "id": "ndh-no-other-land",
+      "url": "https://www.naranjasdehiroshima.com/2025/01/no-other-land.html",
+      "title": "No Other Land - Basel Adra, Hamdan Ballal, Yuval Abraham, Rachel Szor (2024) · NdH",
+      "year": 2024, "approx": false, "duration": 0, "activo": true
+    },
+
+    {
+      "_nota": "Embed original muerto en el post de NdH; reactivar cuando haya copia nueva",
+      "source": "link",
+      "id": "ndh-five-broken-cameras",
+      "url": "https://www.naranjasdehiroshima.com/2013/02/five-broken-cameras.html",
+      "title": "Five Broken Cameras - Emad Burnat y Guy Davidi (2011) · NdH",
+      "year": 2011, "approx": false, "duration": 0, "activo": false
+    },
+    {
+      "_nota": "Extractos restaurados del ciclo Jocelyne Saab (34-88s); valorar si entran como fragmentos",
+      "source": "vimeo",
+      "id": "765058861",
+      "title": "Les Enfants de la guerre - Jocelyne Saab (1976) (extracto restaurado) · NdH",
+      "year": 1976, "approx": false, "duration": 34, "activo": false
+    },
+    {
+      "source": "vimeo",
+      "id": "765063674",
+      "title": "Lettre de Beyrouth - Jocelyne Saab (1978) (extracto restaurado) · NdH",
+      "year": 1978, "approx": false, "duration": 88, "activo": false
+    }
+  ]
+}
