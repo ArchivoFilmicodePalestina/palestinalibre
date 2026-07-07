@@ -175,6 +175,11 @@ main{max-width:1060px;margin:0 auto;padding:10px 24px 90px;position:relative}
 .ficha h3{
   font-family:'Lora',serif;font-weight:500;font-size:16px;line-height:1.35;flex:1;
 }
+.ficha h3 .tlink{
+  all:unset;cursor:pointer;font:inherit;color:inherit;display:block;
+}
+.ficha h3 .tlink:hover{color:#8A5A20;text-decoration:underline;text-decoration-color:rgba(138,90,32,.45)}
+.ficha h3 .tlink:focus-visible{outline:2px solid var(--verde);outline-offset:3px}
 .ficha a.yt{
   font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;
   color:#8A5A20;text-decoration:none;text-transform:uppercase;
@@ -219,8 +224,17 @@ footer a{color:var(--ambar-claro)}
   font-family:'IBM Plex Mono',monospace;font-size:12px;
   padding:5px 12px;border-radius:2px;letter-spacing:.1em;
 }
-.visor-barra button:hover{background:#C24E3B}
-.visor iframe{flex:1;width:100%;border:0;background:#fff}
+.visor-barra button:hover{background:#E0263B}
+.visor-cuerpo{flex:1;display:flex;flex-direction:column;min-height:0;background:#0D0A07}
+.visor-player{flex:1;position:relative;min-height:0}
+.visor-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.visor-info{
+  display:flex;gap:26px;flex-wrap:wrap;align-items:center;
+  padding:12px 16px;background:var(--papel);color:var(--tinta);
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;
+}
+.visor-info .vanio{color:var(--verde);font-weight:500}
+.visor-web{flex:1;width:100%;border:0;background:#fff}
 
 @media (max-width:640px){
   header{padding:52px 18px 40px}
@@ -268,7 +282,7 @@ footer a{color:var(--ambar-claro)}
       <a id="vlink" href="#" target="_blank" rel="noopener">ABRIR EN PESTAÑA ↗</a>
       <button id="vcerrar" aria-label="Cerrar">✕ CERRAR</button>
     </div>
-    <iframe id="vframe" src="about:blank" title="Ficha"></iframe>
+    <div class="visor-cuerpo" id="vcuerpo"></div>
   </div>
 </div>
 
@@ -310,19 +324,32 @@ const SRC = {
 const srcDe = v => SRC[v.source] || SRC.youtube;
 const etiqueta = (s,v) => s.label || (()=>{try{return new URL(s.link(v)).hostname.replace('www.','')}catch(e){return 'enlace'}})();
 
-// visor modal para fichas externas (posts de NdH, etc.)
+// visor modal: la ficha de cada título
 const visor = document.getElementById('visor');
-const vframe = document.getElementById('vframe');
+const vcuerpo = document.getElementById('vcuerpo');
 const abrirVisor = v => {
+  const s = srcDe(v);
+  const t = v.title.replace(/"/g,'&quot;');
   document.getElementById('vtitulo').textContent = v.title;
-  document.getElementById('vlink').href = v.url;
-  vframe.src = v.url;
+  document.getElementById('vlink').href = s.link(v);
+  if (s.embed) {
+    vcuerpo.innerHTML = `
+      <div class="visor-player"><iframe src="${s.embed(v)}" title="${t}"
+        allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+      <div class="visor-info">
+        <span class="vanio">${v.approx?'ca. ':''}${v.year}</span>
+        ${v.duration ? `<span>${fmtDur(v.duration)}</span>` : ''}
+        <span>Fuente: ${etiqueta(s,v)}</span>
+      </div>`;
+  } else {
+    vcuerpo.innerHTML = `<iframe class="visor-web" src="${s.link(v)}" title="${t}"></iframe>`;
+  }
   visor.classList.add('abierto');
   document.body.style.overflow = 'hidden';
 };
 const cerrarVisor = () => {
   visor.classList.remove('abierto');
-  vframe.src = 'about:blank';
+  vcuerpo.innerHTML = '';
   document.body.style.overflow = '';
 };
 document.getElementById('vcerrar').addEventListener('click', cerrarVisor);
@@ -376,18 +403,11 @@ for(const d of Object.keys(decadas).sort((a,b)=>a-b)){
       </button>
       <div class="ficha-cuerpo">
         <div class="ficha-anio"><span>${v.approx?'ca. ':''}${v.year}</span><span>${fmtDur(v.duration)}</span></div>
-        <h3>${v.title}</h3>
+        <h3><button class="tlink">${v.title}</button></h3>
         <a class="yt" href="${s.link(v)}" target="_blank" rel="noopener">Ver en ${etiqueta(s,v)} ↗</a>
       </div>`;
-    if (s.embed) {
-      f.querySelector('.fotograma').addEventListener('click', e => {
-        const b = e.currentTarget;
-        b.innerHTML = `<iframe src="${s.embed(v)}" title="${v.title.replace(/"/g,'&quot;')}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
-        b.style.cursor = 'default';
-      }, {once:true});
-    } else {
-      f.querySelector('.fotograma').addEventListener('click', () => abrirVisor(v));
-    }
+    f.querySelector('.fotograma').addEventListener('click', () => abrirVisor(v));
+    f.querySelector('.tlink').addEventListener('click', () => abrirVisor(v));
     cont.appendChild(f);
   }
   linea.appendChild(sec);
