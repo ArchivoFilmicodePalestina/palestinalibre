@@ -18,7 +18,10 @@
   --ambar:#C99347;       /* nitrato */
   --ambar-claro:#E4B96E;
   --gris:#9C8F79;
-  --rojo:#A8402F;        /* cabeza de proyección */
+  --rojo:#CE1126;        /* rojo de la bandera */
+  --verde:#1E8A4C;       /* verde de la bandera */
+  --verde-claro:#3DAE73;
+  --negro-bandera:#0B0B0B;
   --strip-w:56px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -50,7 +53,23 @@ h1{
   line-height:.95;text-transform:uppercase;
   letter-spacing:.01em;
 }
-h1 em{font-style:normal;color:var(--ambar)}
+h1 em{font-style:normal;color:var(--verde-claro)}
+
+/* cinta de la bandera: negro/blanco/verde con triángulo rojo */
+.bandera{
+  margin-top:26px;width:min(300px,60%);height:14px;position:relative;
+  background:linear-gradient(to bottom,
+    var(--negro-bandera) 0 33.4%,
+    var(--papel) 33.4% 66.7%,
+    var(--verde) 66.7% 100%);
+  outline:1px solid rgba(233,223,200,.28);
+}
+.bandera::before{
+  content:"";position:absolute;left:0;top:0;
+  border-top:7px solid transparent;border-bottom:7px solid transparent;
+  border-left:13px solid var(--rojo);
+  filter:drop-shadow(1px 0 0 rgba(233,223,200,.28));
+}
 .intro{
   margin-top:22px;max-width:56ch;font-size:17px;color:#CDBFA4;
 }
@@ -152,6 +171,7 @@ main{max-width:1060px;margin:0 auto;padding:10px 24px 90px;position:relative}
   font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;
   color:#7A6A4E;display:flex;justify-content:space-between;
 }
+.ficha-anio span:first-child{color:var(--verde);font-weight:500}
 .ficha h3{
   font-family:'Lora',serif;font-weight:500;font-size:16px;line-height:1.35;flex:1;
 }
@@ -162,7 +182,11 @@ main{max-width:1060px;margin:0 auto;padding:10px 24px 90px;position:relative}
 .ficha a.yt:hover{text-decoration:underline}
 
 footer{
-  border-top:1px solid #3A3226;
+  border-top:4px solid;
+  border-image:linear-gradient(to right,
+    var(--negro-bandera) 0 33.4%,
+    var(--papel) 33.4% 66.7%,
+    var(--verde) 66.7% 100%) 1;
   max-width:1060px;margin:0 auto;padding:34px 24px 60px;
   font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gris);
   display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
@@ -214,6 +238,7 @@ footer a{color:var(--ambar-claro)}
 <header>
   <p class="sobre">Filmoteca en línea · 1897 – 2015</p>
   <h1>Archivo Fílmico<br>de <em>Palestina</em></h1>
+  <div class="bandera" aria-hidden="true"></div>
   <p class="intro">Un espacio para recuperar la memoria fílmica de Palestina. Todos los materiales del canal
     <a href="https://www.youtube.com/@ArchivoFilmicodePalestina" target="_blank" rel="noopener">@ArchivoFilmicodePalestina</a>,
     ordenados por el año de filmación de las imágenes — no por su fecha de subida.</p>
