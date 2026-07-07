@@ -357,7 +357,8 @@
   "approx": false,
   "duration": 0,
   "source": "youtube",
-  "url": ""
+  "url": "",
+  "thumb": ""
  },
  {
   "id": "_p-gB7w76ow",
@@ -411,7 +412,8 @@
   "approx": false,
   "duration": 0,
   "source": "youtube",
-  "url": ""
+  "url": "",
+  "thumb": ""
  },
  {
   "id": "25597069",
@@ -420,7 +422,8 @@
   "approx": false,
   "duration": 1407,
   "source": "vimeo",
-  "url": ""
+  "url": "",
+  "thumb": ""
  },
  {
   "id": "20UIkLcGRQE",
@@ -429,7 +432,8 @@
   "approx": false,
   "duration": 0,
   "source": "youtube",
-  "url": ""
+  "url": "",
+  "thumb": ""
  },
  {
   "id": "Jh5iXm5mlVU",
@@ -447,7 +451,8 @@
   "approx": false,
   "duration": 0,
   "source": "youtube",
-  "url": ""
+  "url": "",
+  "thumb": ""
  },
  {
   "id": "ndh-no-other-land",
@@ -456,6 +461,7 @@
   "approx": false,
   "duration": 0,
   "source": "link",
-  "url": "https://www.naranjasdehiroshima.com/2025/01/no-other-land.html"
+  "url": "https://www.naranjasdehiroshima.com/2025/01/no-other-land.html",
+  "thumb": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSpPCG9QHRdGRy-AEo922WS2cE1urwhyyM2U4dBEhAhRZszhtmXLvfuYl_MW7H9P_wNRgcEUWq61F6uRAHxNu76457inhVAva8201Myft2jY1SBDxVXQDG8xvdoL19mHzYY5WZe-KXQjqnTyZwW0RuGgNpx8VZDR8Ce228tDgzdjG0qOsUKzdSIHY9IAPJ/w1200-h630-p-k-no-nu/No%20Other%20Land%20NAranajs%20de%20Hiroshima%20poster_big.jpg"
  }
 ]
