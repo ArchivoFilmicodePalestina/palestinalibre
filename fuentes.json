@@ -38,7 +38,8 @@
       "year": 2015,
       "approx": false,
       "duration": 0,
-      "activo": true
+      "activo": false,
+      "_nota": "Sustituida por la versión VOSE en OK.ru"
     },
     {
       "source": "youtube",
@@ -47,7 +48,8 @@
       "year": 2022,
       "approx": false,
       "duration": 0,
-      "activo": true
+      "activo": false,
+      "_nota": "Sustituida por la versión VOSE en OK.ru"
     },
     {
       "source": "link",
@@ -288,6 +290,46 @@
       "approx": false,
       "duration": 0,
       "activo": true
+    },
+    {
+      "source": "okru",
+      "id": "7709820586655",
+      "title": "Ici et ailleurs (Aquí y en otro lugar) - Jean-Luc Godard, Jean-Pierre Gorin y Anne-Marie Miéville, Grupo Dziga Vertov (1975)",
+      "year": 1975,
+      "approx": false,
+      "duration": 3240,
+      "activo": true,
+      "thumb": "https://iv.okcdn.ru/videoPreview?id=7143854901919&type=37&idx=1&tkn=Q-RE6T-caMhalnDkQTsM15smqUA&fn=external_8"
+    },
+    {
+      "source": "okru",
+      "id": "7709267462815",
+      "title": "Lama Brothers: Pioneers of Arabic Cinema - Raed Duzdar (2013)",
+      "year": 2013,
+      "approx": false,
+      "duration": 3060,
+      "activo": true,
+      "thumb": "https://iv.okcdn.ru/videoPreview?id=7143793887903&type=37&idx=8&tkn=VHg4SDSuGCOl473AUojT4vOHLsE&fn=external_8"
+    },
+    {
+      "source": "okru",
+      "id": "7864592632479",
+      "title": "Off Frame aka Revolution Until Victory - Mohanad Yaqubi (2015) VOSE · NdH",
+      "year": 2015,
+      "approx": false,
+      "duration": 3660,
+      "activo": true,
+      "thumb": "https://iv.okcdn.ru/videoPreview?id=7176755481247&type=37&idx=6&tkn=HnC5bhA-dPcHpvFJ-PJFQeryp44&fn=external_8"
+    },
+    {
+      "source": "okru",
+      "id": "6896721791553",
+      "title": "Tantura - Alon Schwarz (2022) VOSE · NdH",
+      "year": 2022,
+      "approx": false,
+      "duration": 5640,
+      "activo": true,
+      "thumb": "https://iv.okcdn.ru/i?r=BDFSTM1h2o92P_v-s8DgGlgY2PPrt997hNUQuCaA6FBDTgPQna9h0UaAu6dz1dWZF5A&fn=external_8"
     }
   ]
 }
