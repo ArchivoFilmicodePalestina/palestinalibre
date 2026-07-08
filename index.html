@@ -417,6 +417,7 @@ const abrirVisor = v => {
   }
   visor.classList.add('abierto');
   document.body.style.overflow = 'hidden';
+  if (window.goatcounter) goatcounter.count({path:'ficha/'+(v.approx?'ca':'')+v.year+'-'+v.id, title:'Ficha: '+v.title, event:true});
 };
 const cerrarVisor = () => {
   visor.classList.remove('abierto');
@@ -463,6 +464,7 @@ function abrirSala(){
   cola = barajar(PROYECTABLES); pos = -1;
   sala.classList.add('abierta');
   document.body.style.overflow = 'hidden';
+  if (window.goatcounter) goatcounter.count({path:'sala-de-proyeccion', title:'Sala de proyección', event:true});
   cargarYTAPI(()=>{
     if (ytListo){ proyectar(); return; }
     pos = 0;
@@ -563,5 +565,7 @@ const obs = new IntersectionObserver(es => {
 },{rootMargin:'-15% 0px -70% 0px'});
 document.querySelectorAll('.decada').forEach(s=>obs.observe(s));
 </script>
+<script data-goatcounter="https://archivofilmicodepalestina.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
