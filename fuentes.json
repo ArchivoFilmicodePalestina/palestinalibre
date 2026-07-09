@@ -63,15 +63,14 @@
       "thumb": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSpPCG9QHRdGRy-AEo922WS2cE1urwhyyM2U4dBEhAhRZszhtmXLvfuYl_MW7H9P_wNRgcEUWq61F6uRAHxNu76457inhVAva8201Myft2jY1SBDxVXQDG8xvdoL19mHzYY5WZe-KXQjqnTyZwW0RuGgNpx8VZDR8Ce228tDgzdjG0qOsUKzdSIHY9IAPJ/w1200-h630-p-k-no-nu/No%20Other%20Land%20NAranajs%20de%20Hiroshima%20poster_big.jpg"
     },
     {
-      "_nota": "Embed original muerto en el post de NdH; reactivar cuando haya copia nueva",
-      "source": "link",
-      "id": "ndh-five-broken-cameras",
-      "url": "https://www.naranjasdehiroshima.com/2013/02/five-broken-cameras.html",
+      "_nota": "Copia repuesta en el post de NdH (ok.ru); verificar si es la película completa (94 min) o un fragmento",
+      "source": "okru",
+      "id": "4154768361995",
       "title": "Five Broken Cameras - Emad Burnat y Guy Davidi (2011) · NdH",
       "year": 2011,
       "approx": false,
-      "duration": 0,
-      "activo": false,
+      "duration": 1860,
+      "activo": true,
       "thumb": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDShHzFc8V94_g3VmGcAiGcJXG7ebsGQRkWVJdlxVesEC8o0TUJ1R0MxkUkRj97gIHYnpjGgJ6HXiCkpmW_xtRe_yxnEfzCwx-m3zIiNu_XYb8A6cRfgAqVudmMczlhG2dj7-mmtbtvHU/w1200-h630-p-k-no-nu/Five+Broken+Cameras.jpg"
     },
     {
@@ -330,6 +329,34 @@
       "duration": 5640,
       "activo": true,
       "thumb": "https://iv.okcdn.ru/i?r=BDFSTM1h2o92P_v-s8DgGlgY2PPrt997hNUQuCaA6FBDTgPQna9h0UaAu6dz1dWZF5A&fn=external_8"
+    },
+    {
+      "source": "vimeo",
+      "id": "6544195",
+      "title": "Cuatro horas en Chatila - Carlos Lapeña (2005), sobre el texto de Jean Genet",
+      "year": 2005,
+      "approx": false,
+      "duration": 1356,
+      "activo": true
+    },
+    {
+      "source": "vimeo",
+      "id": "138253149",
+      "title": "Freedom to Kill the Other's Children - David Varela (2016) VOSE",
+      "year": 2016,
+      "approx": false,
+      "duration": 1858,
+      "activo": true
+    },
+    {
+      "source": "youtube",
+      "id": "AL30nWIlsUA",
+      "title": "Le Bateau de l'Exil (El barco del exilio) - Jocelyne Saab (1982), restaurada · NdH",
+      "year": 1982,
+      "approx": false,
+      "duration": 0,
+      "activo": true,
+      "_nota": "Restauración del proyecto Untold Stories; subtítulos activables en el player de YouTube"
     }
   ]
 }
