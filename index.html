@@ -248,6 +248,7 @@ footer a{color:var(--ambar-claro)}
   font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;
 }
 .visor-info .vanio{color:var(--verde);font-weight:500}
+.visor-info .vsubs{color:#8A7A5C;font-size:11px;letter-spacing:.04em;flex-basis:100%}
 .visor-web{flex:1;width:100%;border:0;background:#fff}
 
 /* ---------- sala de proyección ---------- */
@@ -363,7 +364,7 @@ const fmtDur = s => {
 const SRC = {
   youtube: {
     thumb: v => `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`,
-    embed: v => `https://www.youtube.com/embed/${v.id}?autoplay=1&hl=es&cc_lang_pref=es`,
+    embed: v => `https://www.youtube.com/embed/${v.id}?autoplay=1&hl=es&cc_lang_pref=es&cc_load_policy=1`,
     link:  v => `https://www.youtube.com/watch?v=${v.id}`,
     label: "YouTube"
   },
@@ -411,6 +412,7 @@ const abrirVisor = v => {
         <span class="vanio">${v.approx?'ca. ':''}${v.year}</span>
         ${v.duration ? `<span>${fmtDur(v.duration)}</span>` : ''}
         <span>Fuente: ${etiqueta(s,v)}</span>
+        ${(v.source||'youtube')==='youtube' ? `<span class="vsubs">Subtítulos traducidos: usa "Abrir en pestaña ↗" (la traducción automática no funciona en el reproductor embebido)</span>` : ''}
       </div>`;
   } else {
     vcuerpo.innerHTML = `<iframe class="visor-web" src="${s.link(v)}" title="${t}"></iframe>`;
