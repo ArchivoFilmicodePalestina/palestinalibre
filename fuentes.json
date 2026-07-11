@@ -59,8 +59,9 @@
       "year": 2024,
       "approx": false,
       "duration": 0,
-      "activo": true,
-      "thumb": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSpPCG9QHRdGRy-AEo922WS2cE1urwhyyM2U4dBEhAhRZszhtmXLvfuYl_MW7H9P_wNRgcEUWq61F6uRAHxNu76457inhVAva8201Myft2jY1SBDxVXQDG8xvdoL19mHzYY5WZe-KXQjqnTyZwW0RuGgNpx8VZDR8Ce228tDgzdjG0qOsUKzdSIHY9IAPJ/w1200-h630-p-k-no-nu/No%20Other%20Land%20NAranajs%20de%20Hiroshima%20poster_big.jpg"
+      "activo": false,
+      "thumb": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSpPCG9QHRdGRy-AEo922WS2cE1urwhyyM2U4dBEhAhRZszhtmXLvfuYl_MW7H9P_wNRgcEUWq61F6uRAHxNu76457inhVAva8201Myft2jY1SBDxVXQDG8xvdoL19mHzYY5WZe-KXQjqnTyZwW0RuGgNpx8VZDR8Ce228tDgzdjG0qOsUKzdSIHY9IAPJ/w1200-h630-p-k-no-nu/No%20Other%20Land%20NAranajs%20de%20Hiroshima%20poster_big.jpg",
+      "_nota": "Sustituida por las dos partes embebidas de Vimeo (VOSE)"
     },
     {
       "_nota": "Copia repuesta en el post de NdH (ok.ru); verificar si es la película completa (94 min) o un fragmento",
@@ -588,6 +589,28 @@
       "duration": 0,
       "activo": false,
       "_nota": "Duplicado: el catálogo ya tiene esta película desde el canal AFP (a4Rsf09oFkY). Activar solo si se cae aquella."
+    },
+    {
+      "source": "vimeo",
+      "id": "1053952657",
+      "h": "6152ede89b",
+      "title": "No Other Land - Basel Adra, Hamdan Ballal, Yuval Abraham y Rachel Szor (2024) VOSE · Parte 1 · NdH",
+      "year": 2024,
+      "approx": false,
+      "duration": 2930,
+      "activo": true,
+      "thumb": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSpPCG9QHRdGRy-AEo922WS2cE1urwhyyM2U4dBEhAhRZszhtmXLvfuYl_MW7H9P_wNRgcEUWq61F6uRAHxNu76457inhVAva8201Myft2jY1SBDxVXQDG8xvdoL19mHzYY5WZe-KXQjqnTyZwW0RuGgNpx8VZDR8Ce228tDgzdjG0qOsUKzdSIHY9IAPJ/w1200-h630-p-k-no-nu/No%20Other%20Land%20NAranajs%20de%20Hiroshima%20poster_big.jpg"
+    },
+    {
+      "source": "vimeo",
+      "id": "1056204527",
+      "h": "593cece872",
+      "title": "No Other Land - Basel Adra, Hamdan Ballal, Yuval Abraham y Rachel Szor (2024) VOSE · Parte 2 · NdH",
+      "year": 2024,
+      "approx": false,
+      "duration": 3096,
+      "activo": true,
+      "thumb": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSpPCG9QHRdGRy-AEo922WS2cE1urwhyyM2U4dBEhAhRZszhtmXLvfuYl_MW7H9P_wNRgcEUWq61F6uRAHxNu76457inhVAva8201Myft2jY1SBDxVXQDG8xvdoL19mHzYY5WZe-KXQjqnTyZwW0RuGgNpx8VZDR8Ce228tDgzdjG0qOsUKzdSIHY9IAPJ/w1200-h630-p-k-no-nu/No%20Other%20Land%20NAranajs%20de%20Hiroshima%20poster_big.jpg"
     }
   ]
 }

@@ -62,6 +62,7 @@ def main():
             "source": e["source"],
             "url": e.get("url", ""),
             "thumb": e.get("thumb", ""),
+            "h": e.get("h", ""),
         })
 
     # --- canales y playlists de YouTube ---
